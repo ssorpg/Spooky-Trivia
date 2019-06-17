@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+    <!--jQuery-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <!--Custom Stylesheet-->
+    <link rel="stylesheet" href="Assets/CSS/style.css">
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="title" class="row justify-content-center">
+            <h1>The Spookiest Trivia Quiz of All!</h1>
+        </div>
+
+        <div id="startGame" class="row justify-content-center">
+            <button id="startButton">Start!</button>
+        </div>
+
+        <div id="questionArea" class="row justify-content-center">
+            <h3 class="question"></h3>
+        </div>
+
+        <div class="col-12">
+            <div class="row justify-content-center answer-1"></div>
+            <div class="row justify-content-center answer-2"></div>
+            <div class="row justify-content-center answer-3"></div>
+            <div class="row justify-content-center answer-4"></div>
+            <div class="row justify-content-center" id="result"></div>
+            <div class="row justify-content-center" id="correctAnswer"></div>
+        </div>
+    </div>
+
+    <!--Game Javascript-->
+    <script type="text/javascript" src="Assets/Javascript/app.js"></script>
+</body>
+
+</html>
