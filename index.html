@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>Spooky Trivia!</title>
 
     <!--jQuery-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -18,24 +18,29 @@
 <body>
     <div id="wrapper">
         <div id="title" class="row justify-content-center">
-            <h1>The Spookiest Trivia Quiz of All!</h1>
+            <h1>Spooky Trivia!</h1>
         </div>
 
         <div id="startGame" class="row justify-content-center">
             <button id="startButton">Start!</button>
         </div>
 
+        <div id="startGame" class="row justify-content-end">
+            <h4 class="timer clearMe"></h4>
+        </div>
+
         <div id="questionArea" class="row justify-content-center">
-            <h3 class="question"></h3>
+            <h3 class="question clearMe"></h3>
         </div>
 
         <div class="col-12">
-            <div class="row justify-content-center answer-1"></div>
-            <div class="row justify-content-center answer-2"></div>
-            <div class="row justify-content-center answer-3"></div>
-            <div class="row justify-content-center answer-4"></div>
-            <div class="row justify-content-center" id="result"></div>
-            <div class="row justify-content-center" id="correctAnswer"></div>
+            <div class="row justify-content-center answer-0 clearMe"></div>
+            <div class="row justify-content-center answer-1 clearMe"></div>
+            <div class="row justify-content-center answer-2 clearMe"></div>
+            <div class="row justify-content-center answer-3 clearMe"></div>
+            <div class="row justify-content-center clearMe" id="result"></div>
+            <div class="row justify-content-center clearMe" id="correctAnswer"></div>
+            <div class="row justify-content-center clearMe" id="incorrectAnswer"></div>
         </div>
     </div>
 

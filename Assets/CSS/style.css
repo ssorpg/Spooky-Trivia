@@ -1,5 +1,6 @@
 body {
     background-color: #fe8000;
+    font-size: 2em;
 }
 #wrapper {
     width: 90%;
@@ -7,9 +8,9 @@ body {
     margin-top: 6%;
 }
 #title {
-    margin-bottom: 4%;
+    margin-bottom: 2%;
 }
-#questions {
+#questionArea {
     margin-bottom: 3%;
     color: #ffffff;
 }
@@ -24,4 +25,7 @@ button {
 }
 button:hover {
     background-color: #4CAF50;
+}
+#correctAnswer {
+    margin-top: 2%;
 }
