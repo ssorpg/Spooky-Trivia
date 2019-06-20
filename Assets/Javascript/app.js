@@ -1,6 +1,6 @@
 // GLOBALS
-// Never reset
-const questions = [
+// Never change
+const questions = [ // Can add as many questions as we want
     'Where does Halloween come from?',
     'Before people used pumpkins, what were Jack O\' Lanterns made out of?',
     'In what year will the next full moon occur during Halloween?',
@@ -12,7 +12,7 @@ const questions = [
     'When do werewolves transform themselves?',
     'Victorians were big fans of spooky things, but why did they put bells in their coffins?'
 ];
-const rightAnswers = [
+const rightAnswers = [ // Answer in position rightAnswers[i] is the answer to question in position questions[i]
     'An ancient festival to celebrate the dead',
     'Turnips',
     '2020',
@@ -24,7 +24,7 @@ const rightAnswers = [
     'When there\'s a full moon',
     'In case they were buried alive by accident and needed to ring for help'
 ];
-const allAnswers = [
+const allAnswers = [ // Answers in position allAnswers[i] are the wrong answers to question in position questions[i]
     ['An ancient festival to celebrate the dead', 'Father Christmas\' birthday', 'The start of the pumpkin season', 'A motorway service station outside Birmingham'],
     ['Turnips', 'Potatoes', 'Bananas', 'Onions'],
     ['2020', '2021', '2022', ' 2023'],
@@ -41,14 +41,14 @@ const allAnswers = [
 var correctAnswers = 0; // Incrementable
 var incorrectAnswers = 0;
 var questionNumber = 0;
-var timeToAnswer;
+var timeToAnswer = 0;
 
 var currentQuestion;
 var currentTimeout;
 var currentInterval;
 
 
-class TriviaQuestion {
+class TriviaQuestion { // Our question object, because classes are fun :)
     constructor(question, rightAnswer, allAnswers) {
         this.question = question,
             this.rightAnswer = rightAnswer,
@@ -63,8 +63,8 @@ function initializeGame() {
     currentQuestion = new TriviaQuestion(questions[questionNumber], rightAnswers[questionNumber], allAnswers[questionNumber]);
 
     clearPage();
-    if (questionNumber === questions.length) {
-        triviaComplete();
+    if (questionNumber === questions.length) { // We went through all the questions
+        triviaComplete(); // Finish the game
         return;
     }
 
@@ -72,23 +72,23 @@ function initializeGame() {
 }
 
 function countDown() {
-    timeToAnswer = 10;  // This many seconds to answer
+    timeToAnswer = 10;  // Sets how many seconds to answer
 
-    currentTimeout = setTimeout(function () {
-        timesUp();
+    currentTimeout = setTimeout(function () { // Behind the scenes timer
+        timesUp(); // Didn't answer in time
     }, timeToAnswer * 1000); // In milliseconds
 
-    $('.timer').text('Time Left: ' + timeToAnswer); // We want this to be called right away
+    $('.timer').text('Time Left: ' + timeToAnswer + 's'); // We want this to be called right away
 
-    currentInterval = setInterval(function() {
-        timeToAnswer--;
-        $('.timer').text('Time Left: ' + timeToAnswer);
+    currentInterval = setInterval(function() { // Visible timer
+        timeToAnswer--; // Lost one second
+        $('.timer').text('Time Left: ' + timeToAnswer + 's'); // Set timer display
     }, 1000); // Count down once per second
 }
 
 function updatePage(currentQuestion) {
     $('.question').text(currentQuestion.question); // Put the question on the screen
-    countDown();
+    countDown(); // Start question timer
 
     for (let i = currentQuestion.allAnswers.length - 1; i > 0; i--) { // Randomize our answers
         let j = Math.floor(Math.random() * (i + 1));
@@ -108,26 +108,26 @@ function updatePage(currentQuestion) {
     }
 }
 
-function clearPage() {
+function clearPage() { // Clear the page
     $('.clearMe').text('');
     $('.clearMe').empty();
 }
 
 function checkAnswer(answer) {
-    if (currentQuestion.rightAnswer === $(answer).text()) {
+    if (currentQuestion.rightAnswer === $(answer).text()) { // Selected the correct answer
         correctAnswers++;
 
         clearPage();
         $('#result').text('That\'s right!');
     }
-    else {
+    else { // Selected the wrong answer
         incorrectAnswers++;
 
         clearPage();
         $('#result').text('That\'s incorrect.');
-        $('#correctAnswer').text('The answer was \'' + currentQuestion.rightAnswer + '\'.');
+        $('#correctAnswer').text('The answer was \'' + currentQuestion.rightAnswer + '\'.'); // Display the right answer
     }
-    clearTimeout(currentTimeout);
+    clearTimeout(currentTimeout); // Cancel our countdowns
     clearInterval(currentInterval);
     nextQuestion();
 }
@@ -138,22 +138,22 @@ function timesUp() {
     $('#result').text('Time\'s up!');
     $('#correctAnswer').text('The answer was \'' + currentQuestion.rightAnswer + '\'.');
 
-    clearInterval(currentInterval);
+    clearInterval(currentInterval); // Need to make sure our interval doesn't keep counting
     nextQuestion();
 }
 
 function nextQuestion() {
-    questionNumber++;
-    setTimeout(function () {
+    questionNumber++; // Next question in questions array
+    setTimeout(function () { // Timer until next question is displayed
         initializeGame();
     }, 3000);
 }
 
-function triviaComplete() {
+function triviaComplete() { // End of the game
     $('#result').text('Quiz complete!');
     $('#correctAnswer').text('You answered ' + correctAnswers + ' questions correctly.');
     $('#incorrectAnswer').text('You answered ' + incorrectAnswers + ' questions incorrectly.');
-    $('#startGame').css('display', 'flex');
+    $('#startGame').css('display', 'flex'); // We want our start button back
 }
 
 
@@ -164,8 +164,8 @@ $('#startButton').on('click', function () {
     incorrectAnswers = 0;
     questionNumber = 0;
 
-    initializeGame();
+    $('#startGame').css('display', 'none'); // Our start button disappears!
+    $('#startButton').text('Restart'); // Start button now becomes our restart button
 
-    $('#startGame').css('display', 'none');
-    $('#startButton').text('Restart');
+    initializeGame(); // Start the game!
 });

@@ -1,14 +1,33 @@
+@font-face {
+    font-family: 'Halloween';
+    src: url('../Fonts/Scary\ Halloween\ Font.ttf');
+}
+html, body {
+    margin: 0;
+    height: 100%;
+}
 body {
-    background-color: #fe8000;
+    box-sizing: border-box;
+    padding-top: 3%;
+    background: url('../Images/halloween_pumpkin_border.jpg') no-repeat center center;
+    background-size: 100vw 100vh;
     font-size: 2em;
 }
 #wrapper {
     width: 90%;
+    min-height: 100%;
     margin: auto;
-    margin-top: 6%;
 }
 #title {
+    font-family: 'Halloween';
     margin-bottom: 2%;
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+}
+#timer {
+    margin-right: 8%;
+}
+.timer {
+    color: white;
 }
 #questionArea {
     margin-bottom: 3%;
